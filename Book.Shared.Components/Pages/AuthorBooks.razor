@@ -1,0 +1,72 @@
+﻿@page "/authors/{authorSlug}/books"
+@page "/authors/{authorSlug}/books/page/{pageNo:int?}"
+
+@inject NavigationManager NavigationManager
+@inject IBookService BookService
+
+@* <PageTitle>Tác Giả | Nhà Sách Online</PageTitle> *@
+<PageTitle>@_heading | Nhà Sách Online</PageTitle>
+<SectionContent SectionName="PageTitle">
+  @* <h1 class="m-0 text-black fw-bold">Sách Của Tác Giả</h1> *@
+  <h1 class="m-0 text-black fw-bold">@_heading</h1>
+  @* <h3 class="text-black mt-2">Danh Sách Sách</h3> *@
+
+  <BooksGrid Books="_booksByAuthorAsync" />
+
+</SectionContent>
+<h3>AuthorBooks</h3>
+
+<div class="container-lg">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="row">
+        <h3 class="mt-2 mb-3 alert-heading">@_heading</h3>
+
+        thịnh
+
+      </div>
+    </div>
+    <div class="col-md-3">
+    </div>
+  </div>
+</div>
+
+@code {
+  [Parameter]
+  public string AuthorSlug { get; set; }
+  [Parameter]
+  public int? PageNo { get; set; } = 1;
+
+  private const int PageSize = 20;
+
+  private BookListDTO[] _booksByAuthorAsync = [];
+  private BookListDTO[] _popularBookAsync = [];
+  private int _totalCount = 0;
+
+  private string _heading = "Tác giả";
+
+  protected override async Task OnInitializedAsync()
+  {
+    if (PageNo <= 0 || string.IsNullOrWhiteSpace(AuthorSlug))
+    {
+      NavigationManager.NavigateTo("/");
+      return;
+    }
+
+    // var ketQua = await BookService.GetBooksByAuthorAsync(PageNo ?? 1, PageSize, AuthorSlug);
+    (_booksByAuthorAsync, _totalCount) = await BookService.GetBooksByAuthorAsync(PageNo ?? 1, PageSize, AuthorSlug);
+
+    var danhSachSanPham = await BookService.GetBooksAsync(PageNo ?? 1, PageSize);
+
+    // var danhSachSanPhamBanChay = BookService.GetPopularBookAsync(10);
+    _popularBookAsync = await BookService.GetPopularBookAsync(10);
+
+    var author = _booksByAuthorAsync.FirstOrDefault()?.Author;
+
+    if (author is not null)
+    {
+      _heading = $"Được sáng tác bởi {author.Value.Name}";
+    }
+
+  }
+}

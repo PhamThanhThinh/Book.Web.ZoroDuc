@@ -1,0 +1,137 @@
+﻿@page "/"
+@page "/page/{pageNo:int?}"
+@using Book.Shared.DTOs
+
+@inject IBookService BookService
+
+<PageTitle>Trang chủ nhà sách online</PageTitle>
+<div class="form-row">
+ <div class="col=md-12">
+    <SectionContent SectionName="PageTitle">
+      <h1 class="m-0 text-black">
+        Nhà Sách Online
+      </h1>
+      <h2 class="text-white bg-main-dark mt-2">Sách bán chạy (Popular)</h2>
+    </SectionContent>
+ </div>
+ 
+</div>
+
+
+
+<div class="container-lg">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="genre-list">
+
+            <div class="genre-item">
+              <a href="/genres">Trang Thể Loại</a>
+            </div>
+
+            <div class="genre-item">
+              @* <h3 class="my-2">Sách Bán Chạy</h3> *@
+
+              <h3>Sách Bán Chạy</h3>
+              <a href="/" title="Popular Book">Popular Book</a>
+            </div>
+
+            <h3 class="my-2">Danh sách thể loại</h3>
+
+            @foreach (var g in _genreDTOs)
+            {
+              <div class="genre-item">
+                <a 
+                  href="?genre=@g.Slug"
+                  title="@g.Name">@g.Name</a>
+              </div>
+            }
+          </div>
+        </div>
+
+        <h3 class="my-2">Danh Sách Các Cuốn Sách anh thịnh </h3>
+        <h3 class="my-2">Danh Sách Các Cuốn Sách abc</h3>
+        @* <h3 class="mt-2 mb-3 alert-heading">@_heading</h3> *@
+
+        @* <div class="row">
+          @foreach (var b in _bookListDTOs)
+          {
+            <div class="col-sm-6 col-lg-3">
+              <a href="/books/@b.Id" title="@b.Name">
+                <figure class="bg-main-light">
+                  <img src="@b.Image" alt="@b.Name" />
+                  <figcaption>
+                    @b.Name
+                  </figcaption>
+                  <figcaption>
+                    <h4>@b.Name</h4>
+                  </figcaption>
+                  <div class="p-2">
+                    <h4>@b.Name</h4>
+                  </div>
+                </figure>
+              </a>
+            </div>
+
+          }
+        </div> *@
+        @* <Book.Shared.Components.Shared.BooksGrid>
+
+        </Book.Shared.Components.Shared.BooksGrid> *@
+
+        @* <BooksGrid>
+
+        </BooksGrid> *@
+        <BooksGrid Books="_bookListDTOs" />
+
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+@code {
+
+  [Parameter]
+  public int? PageNo { get; set; }
+  private const int PageSize = 20;
+  private int _totalCount = 0;
+
+  private GenreDTO[] _genreDTOs = [];
+  private BookListDTO[] _bookListDTOs = [];
+  private BookListDTO[] _popularBooks = [];
+
+  // sắp xếp cách mà các thể loại hiển thị
+  protected override async Task OnInitializedAsync(){
+
+    // khai báo các biến sẽ dùng
+
+    // _genreDTOs = await BookService.GetGenresAsync(isTopOnly: true);
+    // var danhSachTheLoai = BookService.GetGenresAsync(isTopOnly: true);
+    // _popularBooks = await BookService.GetPopularBookAsync();
+    // _popularBooks = await BookService.GetBooksAsync(PageNo, PageSize);
+    // var pagedResult = await BookService.GetBooksAsync(PageNo ?? 1, PageSize);
+    // (_bookListDTOs, _totalCount) = await BookService.GetBooksAsync(PageNo ?? 1, PageSize);
+    // var danhSachSanPham = BookService.GetBooksAsync(PageNo ?? 1, PageSize);
+
+    // sách bán chạy
+    // _popularBooks = await BookService.GetPopularBookAsync(10);
+    // var danhSachSanPhamBanChay = BookService.GetPopularBookAsync(10);
+
+    var danhSachTheLoai = BookService.GetGenresAsync(isTopOnly: true);
+    // var danhSachTheLoai = BookService.GetGenresAsync(isTopOnly: false);
+    var danhSachSanPham = BookService.GetBooksAsync(PageNo ?? 1, PageSize);
+    var danhSachSanPhamBanChay = BookService.GetPopularBookAsync(10);
+
+    _genreDTOs = await danhSachTheLoai;
+    (_bookListDTOs, _totalCount) = await danhSachSanPham;
+
+    /*
+     *sách bạn chạy, có thể viết _popularBooks thành
+     *_popularListBooks
+     */
+    _popularBooks = await danhSachSanPhamBanChay;
+
+  }
+}

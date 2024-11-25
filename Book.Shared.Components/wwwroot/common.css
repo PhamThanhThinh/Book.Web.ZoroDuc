@@ -1,0 +1,97 @@
+﻿:root {
+  --color-main: #CCD5F0;
+  --color-main-light: #00ffff;
+  --color-main-dark: #181a17;
+  --color-very-light-gray: #808080;
+  --color-light-black: #444;
+}
+
+html, body, * {
+  font-family: "Roboto", sans-serif;
+}
+
+/*
+  !important để text-decoration được áp dụng
+*/
+/*a {
+  text-decoration: none !important;
+}*/
+
+html, body {
+  background-color: #e89f9f;
+}
+
+.bg-main {
+  background-color: var(--color-main);
+}
+
+.bg-main-light {
+  background-color: var(--color-main-light);
+}
+
+.bg-main-dark {
+  background-color: var(--color-main-dark);
+}
+
+.text-main {
+  color: var(--color-main);
+}
+
+.right-box {
+  margin: 20px;
+  float: right; /* Aligns the box to the right */
+  width: 300px; /* Sets the width of the box */
+  padding: 10px; /* Adds padding inside the box */
+  background-color: #f0f0f0; /* Light gray background for visibility */
+  border: 1px solid #ccc; /* Adds a border to the box */
+  border-radius: 5px; /* Rounds the corners slightly */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+}
+
+.popular-books-list {
+  margin: 20px 0; /* Adds space above and below the section */
+  padding: 15px; /* Adds space inside the container */
+  background-color: #f9f9f9; /* Light background color */
+  border: 1px solid #ddd; /* Subtle border */
+  border-radius: 8px; /* Rounded corners */
+}
+
+  .popular-books-list img {
+    width: 100px; /* Sets a fixed size for book covers */
+    height: auto; /* Maintains aspect ratio */
+    margin-bottom: 5px; /* Adds space below the image */
+    border-radius: 5px; /* Slightly rounds the image corners */
+  }
+
+.popular-books-item {
+  display: flex; /* Hiển thị các thành phần theo hàng ngang */
+  align-items: center; /* Căn giữa theo chiều dọc */
+  margin-bottom: 15px; /* Thêm khoảng cách giữa các mục */
+  padding: 10px; /* Thêm khoảng cách bên trong */
+  background-color: #fff; /* Màu nền trắng */
+  border: 1px solid #ddd; /* Viền mỏng nhẹ */
+  border-radius: 5px; /* Bo tròn các góc */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ */
+}
+
+  .popular-books-item img {
+    width: 80px; /* Đặt kích thước cho hình ảnh */
+    height: auto; /* Duy trì tỷ lệ khung hình */
+    margin-right: 10px; /* Thêm khoảng cách giữa hình ảnh và nội dung */
+    border-radius: 5px; /* Bo góc ảnh */
+  }
+
+.book-title {
+  font-size: 1.5em; /* Tăng kích thước chữ để làm tiêu đề nổi bật */
+  font-weight: bold; /* Làm chữ đậm */
+  color: #333; /* Màu chữ đậm nhưng không quá tối */
+  text-align: center; /* Căn giữa tiêu đề */
+  margin: 10px 0; /* Thêm khoảng cách trên và dưới */
+  font-family: 'Georgia', serif; /* Phong cách chữ mang cảm giác cổ điển */
+}
+
+  .book-title:hover {
+    color: #007BFF; /* Đổi màu chữ khi người dùng rê chuột */
+    text-decoration: underline; /* Gạch dưới tiêu đề để tạo hiệu ứng */
+    cursor: pointer; /* Hiển thị con trỏ tay nếu tiêu đề có thể nhấp */
+  }

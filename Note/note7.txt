@@ -1,0 +1,47 @@
+vscode
+display: flex;
+chỉ cần bấm 
+df là sẽ ra gợi ý
+trong vs thì phải viết riêng display và flex
+vs tool backend
+vscode tool frontend
+sql script cơ bản
+thực tế dùng linq
+bcw dùng trong vscode
+đối với blazar và .net framework thì css html sẽ tự động được load lại không cần dùng chức năng hot reload
+.net core mvc thì phải build lại
+lỡ reset css p-0 p0
+
+robbie-morrison
+
+doctor who comic amazon
+
+ctrl + space để lấy gợi ý code
+
+Shared
+khai báo css inline
+
+cấu trúc margin padding cho frontend web (làm giao diện web)
+https://www.avajava.com/tutorials/lessons/how-are-margins-borders-padding-and-content-related.html
+
+.net core dùng ViewBag.Title
+blazor PageTitle
+
+Book Detail Page
+
+.net core mvc
+blazor
+web api
+MAUI (làm mobile đa nền tảng: android, ios)
+
+real time thời gian thật signalR (làm ứng dụng web nói chuyện trực tuyến
+báo cáo thống kê thời gian thật
+)
+nên làm thêm nhiều project
+project bự (control một cục source bự, clean code)
+
+BookDetails
+
+ctrl + S lưu tránh mất code khi bị mất điện giữa chừng
+
+thường sẽ có bộ ắc quy trữ điện để khi bị mất diện thì dùng sơ cua

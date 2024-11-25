@@ -1,0 +1,18 @@
+abc-xyz
+
+html làm giao diện cho ứng dụng máy tính 
+
+PM Project Manager
+GUI
+Blazor sẽ dùng khái niệm Page và Component
+.net core mvc thuần thì dùng khái niệm View
+
+Interface
+Service
+
+Làm GUI
+bước đầu sẽ lấy phông chữ (google)
+Project này giao mình làm thủ công
+
+Ứng dụng máy tính ( dùng Mudblazor sau)
+

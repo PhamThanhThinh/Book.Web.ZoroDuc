@@ -1,0 +1,29 @@
+mapping ánh xạ
+SEO
+
+ViewBag.Title
+varibale
+
+component (blazor)
+view (.net framework và .net core)
+
+view và partial
+
+mảng array
+
+p là padding (bootstrap cơ bản)
+
+gõ jcc => justify-content-center (class trong bootstrap)
+
+foreach nếu muốn load nhiều thông tin từ database lên giao diện web
+
+Clean Solution để fix lỗi line 1 không tìm thấy khi kích đúp chuột vào
+
+responsive
+
+carousel in boostrap (slide)
+ý em là muốn sắp xếp thế
+nên a commit code lên đi git đã 
+để e code neesu có sai thì ae mình 
+revert lại ok a?
+tạo project mới sau đó tạo một respository mới
